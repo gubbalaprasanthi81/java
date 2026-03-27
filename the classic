@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+
+public class TaskManager {
+    public static void main(String[] args) {
+        ArrayList<String> tasks = new ArrayList<>();
+
+        // Create
+        tasks.add("Finish README.md");
+        tasks.add("Push code to GitHub");
+
+        // Read
+        System.out.println("Current Tasks: " + tasks);
+
+        // Update
+        tasks.set(0, "Finish Documentation");
+
+        // Delete
+        tasks.remove(1);
+
+        System.out.println("Updated Tasks: " + tasks);
+    }
+}
