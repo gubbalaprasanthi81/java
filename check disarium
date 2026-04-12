@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Disarium {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), temp = n, sum = 0;
+        int len = String.valueOf(n).length();
+
+        while (temp != 0) {
+            int d = temp % 10;
+            sum += Math.pow(d, len--);
+            temp /= 10;
+        }
+
+        System.out.println(sum == n ? "Disarium" : "Not Disarium");
+    }
+}
