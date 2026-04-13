@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class WordsVowel {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] words = sc.nextLine().toLowerCase().split(" ");
+
+        int count = 0;
+
+        for (String w : words)
+            if ("aeiou".indexOf(w.charAt(0)) != -1)
+                count++;
+
+        System.out.println(count);
+    }
+}
