@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class CountTypes {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        int digits = 0, letters = 0, spaces = 0;
+
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c)) digits++;
+            else if (Character.isLetter(c)) letters++;
+            else if (c == ' ') spaces++;
+        }
+
+        System.out.println("Digits: " + digits);
+        System.out.println("Letters: " + letters);
+        System.out.println("Spaces: " + spaces);
+    }
+}
