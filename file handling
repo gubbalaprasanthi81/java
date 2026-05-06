@@ -1,0 +1,16 @@
+import java.io.*;
+
+public class FileExample {
+    public static void main(String[] args) throws Exception {
+        FileWriter fw = new FileWriter("data.txt");
+        fw.write("Hello Java File Handling");
+        fw.close();
+
+        BufferedReader br = new BufferedReader(new FileReader("data.txt"));
+        String line;
+        while((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+        br.close();
+    }
+}
