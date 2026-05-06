@@ -1,0 +1,41 @@
+import java.util.*;
+
+class Student {
+    int id;
+    String name;
+    double marks;
+
+    Student(int id, String name, double marks) {
+        this.id = id;
+        this.name = name;
+        this.marks = marks;
+    }
+
+    void display() {
+        System.out.println(id + " " + name + " " + marks);
+    }
+}
+
+public class StudentManagement {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Student> list = new ArrayList<>();
+
+        while(true) {
+            System.out.println("\n1.Add 2.View 3.Exit");
+            int ch = sc.nextInt();
+
+            switch(ch) {
+                case 1:
+                    System.out.print("Enter ID, Name, Marks: ");
+                    list.add(new Student(sc.nextInt(), sc.next(), sc.nextDouble()));
+                    break;
+                case 2:
+                    for(Student s : list) s.display();
+                    break;
+                case 3:
+                    System.exit(0);
+            }
+        }
+    }
+}
