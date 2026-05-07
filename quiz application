@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class QuizApp {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int score = 0;
+
+        System.out.println("1. Java is?");
+        System.out.println("a) Language b) Animal");
+        String ans1 = sc.next();
+
+        if(ans1.equalsIgnoreCase("a"))
+            score++;
+
+        System.out.println("2. JVM stands for?");
+        System.out.println("a) Java Virtual Machine b) Java Variable Method");
+        String ans2 = sc.next();
+
+        if(ans2.equalsIgnoreCase("a"))
+            score++;
+
+        System.out.println("Final Score: " + score);
+    }
+}
