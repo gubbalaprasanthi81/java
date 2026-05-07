@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class TodoList {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> tasks = new ArrayList<>();
+
+        while(true) {
+            System.out.println("\n1.Add Task");
+            System.out.println("2.View Tasks");
+            System.out.println("3.Exit");
+
+            int ch = sc.nextInt();
+            sc.nextLine();
+
+            switch(ch) {
+                case 1:
+                    System.out.print("Enter Task: ");
+                    tasks.add(sc.nextLine());
+                    break;
+
+                case 2:
+                    for(String t : tasks)
+                        System.out.println("- " + t);
+                    break;
+
+                case 3:
+                    System.exit(0);
+            }
+        }
+    }
+}
