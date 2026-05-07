@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class CurrencyConverter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double rate = 83.5;
+
+        System.out.print("Enter Rupees: ");
+        double rupees = sc.nextDouble();
+
+        double dollars = rupees / rate;
+
+        System.out.println("Dollars = $" + dollars);
+    }
+}
