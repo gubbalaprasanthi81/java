@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Library {
+    public static void main(String[] args) {
+        ArrayList<String> books = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+
+        while(true) {
+            System.out.println("1.Add Book");
+            System.out.println("2.View Books");
+            System.out.println("3.Exit");
+
+            int ch = sc.nextInt();
+            sc.nextLine();
+
+            switch(ch) {
+                case 1:
+                    System.out.print("Book Name: ");
+                    books.add(sc.nextLine());
+                    break;
+
+                case 2:
+                    for(String b : books)
+                        System.out.println(b);
+                    break;
+
+                case 3:
+                    System.exit(0);
+            }
+        }
+    }
+}
