@@ -1,0 +1,54 @@
+import java.util.*;
+
+class Expense {
+    String item;
+    double amount;
+
+    Expense(String item, double amount) {
+        this.item = item;
+        this.amount = amount;
+    }
+}
+
+public class ExpenseTracker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Expense> expenses = new ArrayList<>();
+        double total = 0;
+
+        while(true) {
+            System.out.println("\n1.Add Expense");
+            System.out.println("2.View Expenses");
+            System.out.println("3.Total");
+            System.out.println("4.Exit");
+
+            int ch = sc.nextInt();
+            sc.nextLine();
+
+            switch(ch) {
+                case 1:
+                    System.out.print("Item: ");
+                    String item = sc.nextLine();
+
+                    System.out.print("Amount: ");
+                    double amt = sc.nextDouble();
+
+                    expenses.add(new Expense(item, amt));
+                    total += amt;
+                    break;
+
+                case 2:
+                    for(Expense e : expenses)
+                        System.out.println(e.item + " - ₹" + e.amount);
+                    break;
+
+                case 3:
+                    System.out.println("Total Expense = ₹" + total);
+                    break;
+
+                case 4:
+                    System.exit(0);
+            }
+        }
+    }
+}
