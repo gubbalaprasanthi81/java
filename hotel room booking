@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class HotelBooking {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int rooms = 5;
+
+        System.out.print("Enter rooms to book: ");
+        int book = sc.nextInt();
+
+        if(book <= rooms) {
+            rooms -= book;
+            System.out.println("Booked Successfully");
+            System.out.println("Remaining Rooms: " + rooms);
+        } else {
+            System.out.println("Rooms Not Available");
+        }
+    }
+}
