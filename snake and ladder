@@ -1,0 +1,11 @@
+import java.util.Random;
+
+public class SnakeLadder {
+    public static void main(String[] args) {
+        Random r = new Random();
+
+        int dice = r.nextInt(6) + 1;
+
+        System.out.println("Dice Number: " + dice);
+    }
+}
