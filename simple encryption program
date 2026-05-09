@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Encryption {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Message: ");
+        String msg = sc.nextLine();
+
+        String encrypted = "";
+
+        for(char ch : msg.toCharArray()) {
+            encrypted += (char)(ch + 2);
+        }
+
+        System.out.println("Encrypted Message: " + encrypted);
+    }
+}
