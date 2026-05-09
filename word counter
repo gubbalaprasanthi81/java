@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class WordCounter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter sentence: ");
+        String text = sc.nextLine();
+
+        String words[] = text.split(" ");
+
+        System.out.println("Word Count = " + words.length);
+    }
+}
