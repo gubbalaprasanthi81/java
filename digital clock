@@ -1,0 +1,12 @@
+import java.time.LocalTime;
+
+public class DigitalClock {
+    public static void main(String[] args) throws Exception {
+
+        while(true) {
+            System.out.println(LocalTime.now());
+
+            Thread.sleep(1000);
+        }
+    }
+}
