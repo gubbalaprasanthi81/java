@@ -1,0 +1,47 @@
+import java.util.*;
+
+class Contact {
+    String name;
+    String phone;
+
+    Contact(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+}
+
+public class ContactManager {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Contact> contacts = new ArrayList<>();
+
+        while(true) {
+            System.out.println("\n1.Add Contact");
+            System.out.println("2.View Contacts");
+            System.out.println("3.Exit");
+
+            int ch = sc.nextInt();
+            sc.nextLine();
+
+            switch(ch) {
+                case 1:
+                    System.out.print("Name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Phone: ");
+                    String phone = sc.nextLine();
+
+                    contacts.add(new Contact(name, phone));
+                    break;
+
+                case 2:
+                    for(Contact c : contacts)
+                        System.out.println(c.name + " - " + c.phone);
+                    break;
+
+                case 3:
+                    System.exit(0);
+            }
+        }
+    }
+}
