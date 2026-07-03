@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+
+class Book {
+    int id;
+    String title;
+    boolean issued = false;
+
+    Book(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    void display() {
+        System.out.println(id + " " + title + " " +
+                (issued ? "Issued" : "Available"));
+    }
+}
+
+public class LibraryManagement {
+    public static void main(String[] args) {
+
+        ArrayList<Book> books = new ArrayList<>();
+
+        books.add(new Book(101, "Java"));
+        books.add(new Book(102, "Python"));
+        books.add(new Book(103, "C++"));
+
+        books.get(0).issued = true;
+
+        for (Book b : books)
+            b.display();
+    }
+}
