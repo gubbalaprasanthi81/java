@@ -1,0 +1,104 @@
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+
+# Load Dataset
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+print("Training Images:", X_train.shape)
+print("Testing Images :", X_test.shape)
+
+# Normalize
+X_train = X_train.astype("float32") / 255.0
+X_test = X_test.astype("float32") / 255.0
+
+# Reshape
+X_train = X_train.reshape(-1, 28, 28, 1)
+X_test = X_test.reshape(-1, 28, 28, 1)
+
+# Build CNN
+model = Sequential([
+    Input(shape=(28,28,1)),
+
+    Conv2D(32, (3,3), activation='relu'),
+    MaxPooling2D((2,2)),
+
+    Conv2D(64, (3,3), activation='relu'),
+    MaxPooling2D((2,2)),
+
+    Flatten(),
+
+    Dense(128, activation='relu'),
+    Dropout(0.5),
+
+    Dense(10, activation='softmax')
+])
+
+# Compile
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+model.summary()
+
+# Train
+history = model.fit(
+    X_train,
+    y_train,
+    epochs=10,
+    batch_size=64,
+    validation_data=(X_test, y_test)
+)
+
+# Evaluate
+loss, accuracy = model.evaluate(X_test, y_test)
+
+print("Test Loss:", loss)
+print("Test Accuracy:", accuracy)
+
+# Accuracy Graph
+plt.figure(figsize=(8,5))
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title("Model Accuracy")
+plt.xlabel("Epoch")
+plt.ylabel("Accuracy")
+plt.legend(["Train","Validation"])
+plt.grid(True)
+plt.show()
+
+# Loss Graph
+plt.figure(figsize=(8,5))
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title("Model Loss")
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+plt.legend(["Train","Validation"])
+plt.grid(True)
+plt.show()
+
+# Prediction
+predictions = model.predict(X_test)
+
+plt.figure(figsize=(15,6))
+
+for i in range(10):
+    plt.subplot(2,5,i+1)
+    plt.imshow(X_test[i].reshape(28,28), cmap='gray')
+    plt.title(f"Pred: {np.argmax(predictions[i])}")
+    plt.axis("off")
+
+plt.tight_layout()
+plt.show()
+
+# Save Model
+model.save("cnn_mnist_model.keras")
+
+print("Model saved successfully.")
